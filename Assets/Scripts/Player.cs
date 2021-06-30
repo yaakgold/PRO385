@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+//Created by: Ya'akov Goldberg
+
 public class Player : MonoBehaviour
 {
     public float speed = 2;
@@ -23,12 +25,15 @@ public class Player : MonoBehaviour
         if (gamepad == null)
             return;
 
-        input = gamepad.leftStick.ReadValue();
-
         if (gamepad.buttonSouth.wasPressedThisFrame)
         {
             OnFire();
-        }        
+        }
+
+        if (Input.anyKey)
+            return;
+        
+        input = gamepad.leftStick.ReadValue();
     }
 
     public void OnFire()
